@@ -1,12 +1,17 @@
 filters = require './filters'
 
 class Query
-  constructor: (@index) ->
+  constructor: (@client, @index) ->
     @aggregations = []
     @query = { 'must': [], 'must_not': [] }
 
+  _getQuery: ->
+    if @query.must.length or @query.must_not.length
+      return @query
+    return { 'must': [ { match_all: {} } ] }
+
   _clone: ->
-    clone = new Query @index
+    clone = new Query @client, @index
     clone.aggregations = @aggregations
     clone.query = @query
     return clone
@@ -33,14 +38,19 @@ class Query
     return _filters
 
   execute: ->
-    return @index.client.es.search @toObject()
+    return @client.es.search {
+        index: @index,
+        body: @toObject()
+      }
+      .then (response) ->
+        return response.aggregations.filtered
 
   toObject: ->
     obj = {
       aggs: {
         filtered: {
           filter: {
-            bool: @query
+            bool: @_getQuery()
           },
           aggs: {}
         }
