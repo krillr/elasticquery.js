@@ -1,0 +1,42 @@
+{
+  "name": "elasticquery.js",
+  "description": "",
+  "version": "0.0.1",
+  "homepage": "https://github.com/krillr/elasticquery.js",
+  "author": {
+    "name": "Aaron Krill",
+    "email": "aaron@krillr.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krillr/elasticquery.js"
+  },
+  "bugs": {
+    "url": "https://github.com/krillr/elasticquery.js/issues"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "https://github.com/krillr/elasticquery.js/blob/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "preinstall": "coffee -o lib/ -c src/*.coffee",
+    "test": "istanbul cover _mocha test/main.coffee -- --compilers coffee:coffee-script/register"
+  },
+  "dependencies": {
+    "elasticsearch": "latest"
+  },
+  "devDependencies": {
+    "chai": "latest",
+    "coffee-script": "1.9.x",
+    "istanbul": "*",
+    "mocha": "*",
+    "q": "latest"
+  },
+  "main": "lib/elasticquery.js",
+  "keywords": []
+}
