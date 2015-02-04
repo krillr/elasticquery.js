@@ -18,7 +18,7 @@ class Aggregation
 
   aggregate: (aggregation) ->
     clone = @_clone()
-    clone.aggregations.push aggregation
+    clone.aggregations.push aggregation._clone()
     return clone
 
 module.exports = Aggregation
