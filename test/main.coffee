@@ -3,7 +3,6 @@ Q = require 'q'
 fixtures = require './fixtures'
 
 chai = require 'chai'
-chai.use require('chai-as-promised')
 
 should = chai.should()
 expect = chai.expect
