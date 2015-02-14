@@ -1,7 +1,7 @@
 {
   "name": "elasticquery.js",
   "description": "Simple aggregation-centric library for querying ElasticSearch",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/krillr/elasticquery.js",
   "author": {
     "name": "Aaron Krill",

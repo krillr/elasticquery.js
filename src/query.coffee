@@ -20,10 +20,10 @@ class Query
     # I would kill for a decent rsplit in javascript
     split_filter = filter.split "__"
 
-    if split_filter[filter.length-1] in filters
+    if split_filter[split_filter.length-1] in filters
       # because then I wouldn't have to do this kind of crap
-      key = filter.splice(0,filter.length-1).join("__").replace("__",".")
-      filter = filters[filter[filter.length-1]]
+      key = split_filter.splice(0,split_filter.length-1).join("__").replace("__",".")
+      filter = filters[split_filter[split_filter.length-1]]
     else
       key = filter
       filter = filters.default
